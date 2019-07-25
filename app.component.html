@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <input type="text" placeholder="enter input" #itemInput />
+  <button value="Enter Input" (click)="add_tolist(itemInput.value)">Add</button>
+  <br><br>
+  <div>
+    <table>
+      <tr>
+        <th>Index</th>
+        <th>Label</th>
+        <th>Done</th>
+      </tr>
+      <tr *ngFor="let todo of itemList; let i = index">
+        <td>{{i+1}}</td>
+        <td><span [ngStyle]="{'text-decoration' : todo.isStriked == true ? 'line-through':'none'}">{{todo.label}}</span></td>
+        <td><input type="checkbox" value="done" (click)="strikeThrough(i)"></td>
+      </tr>
+    </table>
+  </div>
+  <router-outlet></router-outlet>
